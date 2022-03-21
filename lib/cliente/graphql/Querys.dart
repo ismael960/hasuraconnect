@@ -1,5 +1,4 @@
 class QuerysCliente{
-
   static String getPersonas = r""" 
     query getPersonas ($tipo: String) {
       res_partner(where: {tipo: {_eq: $tipo}}, limit: 10) {
@@ -17,5 +16,4 @@ class QuerysCliente{
       }
     }
   """;
-
 }

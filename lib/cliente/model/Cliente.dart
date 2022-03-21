@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:get/get.dart';
-
 Cliente clienteFromJson(String str) => Cliente.fromJson(json.decode(str));
 
 String clienteToJson(Cliente data) => json.encode(data.toJson());
@@ -34,7 +32,6 @@ class Cliente {
   String? identificacion;
   String? tipoIdentificacion;
   String? tipo;
-
 
   // String? partnerLatitude;
   // String? partnerLongitude;
@@ -87,9 +84,7 @@ class Cliente {
       };
 
   setTipoIdentificacion(String tipo) {
-    tipo == 'Cedula'
-        ? this.tipoIdentificacion = 'cedula'
-        : this.tipoIdentificacion = 'RUC';
+    tipo == 'Cedula' ? this.tipoIdentificacion = 'cedula' : this.tipoIdentificacion = 'RUC';
   }
 
   String getTipoIdentificacion() {

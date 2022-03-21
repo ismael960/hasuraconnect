@@ -1,14 +1,13 @@
 import 'package:get/get.dart';
-import 'package:hasuraconnect/cliente/data/ClienteServiceFirebase.dart';
-import 'package:hasuraconnect/cliente/data/ClienteServiceGraphql.dart';
+import 'package:hasuraconnect/cliente/data/graphql/ClienteServiceGraphql.dart';
 import 'package:hasuraconnect/cliente/model/Cliente.dart';
 
 class ClienteRepository {
-  ClienteServiceGraphql _clienteServiceGraphql =
+  final ClienteServiceGraphql _clienteServiceGraphql =
       Get.find<ClienteServiceGraphql>();
 
   Future<int?> insertCliente(Cliente cliente) async {
-     await _clienteServiceGraphql.insertCliente(cliente);
+    return await _clienteServiceGraphql.insertCliente(cliente);
   }
 
   Future<int?> updateCliente(Cliente cliente) async {

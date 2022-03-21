@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:developer';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hasuraconnect/cliente/model/Cliente.dart';
 import 'package:hasuraconnect/cliente/repository/ClienteRepository.dart';
@@ -12,17 +13,11 @@ class ClienteController extends GetxController {
 
   List<Cliente> clientes = [];
 
-  //dependencia
+  //Dependencias
   ClienteRepository _clienteRepository = Get.find<ClienteRepository>();
 
-  //form
+  //Formkey
   final formKeyCliente = GlobalKey<FormState>();
-
-  init() async {
-    this.clientes = (await _clienteRepository.getClientes())!;
-    _loading = false;
-    update();
-  }
 
   @override
   void onInit() {
@@ -30,7 +25,13 @@ class ClienteController extends GetxController {
     super.onInit();
   }
 
-  insertCliente(Cliente cliente) async {
+  init() async {
+    this.clientes = (await _clienteRepository.getClientes())!;
+    this._loading = false;
+    update();
+  }
+
+  addCliente(Cliente cliente) async {
     cliente.displayName = cliente.name;
     cliente.tipoIdentificacion = 'cedula';
     cliente.tipo = 'cliente';
@@ -38,7 +39,7 @@ class ClienteController extends GetxController {
       this.clientes.add(cliente);
       update();
       Get.back();
-      mostrarDialogDobleWidget(Get.context!, 'Creado con exito');
+      mostrarDialogSimpleWidget(Get.context!, "Creado con exito");
     } else {
       mostrarDialogSimpleWidget(Get.context!, "Vuelve a intentar mas tarde");
     }
@@ -53,7 +54,7 @@ class ClienteController extends GetxController {
       });
       update();
       Get.back();
-      mostrarDialogDobleWidget(Get.context!, 'Actualizado con exito');
+      mostrarDialogSimpleWidget(Get.context!, "Actualizado con exito");
     } else {
       mostrarDialogSimpleWidget(Get.context!, "Vuelve a intentar mas tarde");
     }
@@ -66,7 +67,7 @@ class ClienteController extends GetxController {
           .removeWhere((element) => element.identificacion == identificacion);
       update();
       Get.back();
-      mostrarDialogDobleWidget(Get.context!, 'Eliminado con exito');
+      mostrarDialogSimpleWidget(Get.context!, "Eliminado con exito");
     } else {
       mostrarDialogSimpleWidget(Get.context!, "Vuelve a intentar mas tarde");
     }

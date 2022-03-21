@@ -16,7 +16,6 @@ class ClienteServiceGraphql {
           await _client.mutation(MutationsCliente.insertPersona, variables: {
         'object': cliente.toJsonGraphql(),
       });
-      //log("${result}");
       return result['data']['insert_res_partner_one']['id'];
     } catch (e) {
       print(e.toString());
@@ -43,7 +42,7 @@ class ClienteServiceGraphql {
       var result = await _client
           .query(QuerysCliente.getPersonas, variables: {'tipo': "cliente"});
       final List response = result['data']['res_partner'];
-      //log("$response");
+      log("$response");
       List<Cliente> clientes = [];
       for (var i = 0; i < response.length; i++) {
         clientes.add(Cliente.fromJson(response[i] as Map<String, dynamic>));

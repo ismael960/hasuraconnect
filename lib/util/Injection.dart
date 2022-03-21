@@ -1,23 +1,22 @@
+
 import 'package:get/get.dart';
 import 'package:hasuraconnect/cliente/controller/ClienteController.dart';
-import 'package:hasuraconnect/cliente/data/ClienteServiceFirebase.dart';
-import 'package:hasuraconnect/cliente/data/ClienteServiceGraphql.dart';
+import 'package:hasuraconnect/cliente/data/graphql/ClienteServiceGraphql.dart';
 import 'package:hasuraconnect/cliente/repository/ClienteRepository.dart';
 import 'package:hasuraconnect/util/GraphqlConfig.dart';
 
 class Injection {
   static void init() {
-    //Cliente graphql
+    //Cliente
     Get.lazyPut(() => GraphqlConfig());
 
-    //Serviciodfgdf
+    //Servicios
     Get.lazyPut(() => ClienteServiceGraphql());
-    //Get.lazyPut(() => ClienteServiceFirebase());
 
-    //Repositorio
+    //Repositorios
     Get.lazyPut(() => ClienteRepository());
 
-    //Controlador
-    Get.lazyPut(() => ClienteController());
+    //Controladores Globales
+    //Get.lazyPut(() => ClienteController());
   }
 }

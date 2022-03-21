@@ -20,33 +20,33 @@ class ItemClienteWidget extends StatelessWidget {
         spacing: 15,
         children: [
           GestureDetector(
-            child: CircleAvatar(
-              child: Icon(
-                Icons.delete,
-                color: Colors.red,
+              child: CircleAvatar(
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
+                backgroundColor: Colors.white,
               ),
-              backgroundColor: Colors.white,
-            ),
-            onTap: () {
-              mostrarDialogDobleWidget(
-                  context, "Esta seguro de eliminar el cliente",
-                  fIzquierda: () =>
-                      clienteCtrl.eliminarCliente(cliente.identificacion!),
-                  fBotonIDerecha: () => Get.back());
-            },
-          ),
+              onTap: () {
+                mostrarDialogDobleWidget(
+                    context, "Esta seguro de eliminar el cliente",
+                    fIzquierda: () {
+                  clienteCtrl.eliminarCliente(cliente.identificacion!);
+                }, fBotonIDerecha: () {
+                  Get.back();
+                });
+              }),
           GestureDetector(
-            child: CircleAvatar(
-              child: Icon(
-                Icons.edit,
-                color: Colors.blueAccent,
+              child: CircleAvatar(
+                child: Icon(
+                  Icons.edit,
+                  color: Colors.blueAccent,
+                ),
+                backgroundColor: Colors.white,
               ),
-              backgroundColor: Colors.white,
-            ),
-            onTap: () {
-              Get.to(AddCliente(cliente: cliente, accion: 2));
-            },
-          )
+              onTap: () {
+                Get.to(AddCliente(cliente: cliente, accion: 2));
+              })
         ],
       ),
     );
