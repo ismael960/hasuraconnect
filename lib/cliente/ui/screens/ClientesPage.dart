@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hasuraconnect/cliente/controller/ClienteController.dart';
+import 'package:hasuraconnect/cliente/model/Cliente.dart';
+import 'package:hasuraconnect/cliente/ui/screens/AddCliente.dart';
 import 'package:hasuraconnect/cliente/ui/widgets/CircularProgressWidget.dart';
 import 'package:hasuraconnect/cliente/ui/widgets/ItemClienteWidget.dart';
 
@@ -28,7 +30,7 @@ class ClientesPage extends StatelessWidget {
           heroTag: "crearCliente",
           child: Icon(Icons.add),
           onPressed: () {
-            Get.toNamed("/add");
+            Get.to(AddCliente(cliente: Cliente(), accion: 1));
           }),
     );
   }
